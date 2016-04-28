@@ -29,6 +29,13 @@ export class SocketService {
   getStatus(): any {
     return this.status;
   }
+  sendSettings(settings): void {
+    var message: any= {};
+    Object.assign(message, settings);
+    message.topic = "TEST";
+    message.action = "SETTINGS";
+    this.ws.send(JSON.stringify(message));
+  }
 
   onmessage(event): void {
     console.log(event);

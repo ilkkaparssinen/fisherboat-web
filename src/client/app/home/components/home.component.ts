@@ -23,6 +23,12 @@ export class HomeComponent {
     turn: 0.0
   };
 
+  ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
+    console.log("NGONCHANGES");
+    socketService.sendSettings(this.settings);
+    if (changes['fontSize']) { // fire your event }
+    }
+  }
 
   constructor(public socketService: SocketService) {
     console.log('Home component');
