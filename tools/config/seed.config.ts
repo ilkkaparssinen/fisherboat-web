@@ -136,7 +136,7 @@ export class SeedConfig {
     },
 
     map: {
-    moment: 'momentjs/moment.js',
+    moment: 'moment/moment.js',
     'ng2-bootstrap': 'ng2-bootstrap/ng2-bootstrap.js'
   }
   };
