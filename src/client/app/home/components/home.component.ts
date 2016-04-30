@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 
 import {SocketService} from '../../shared/index';
-import {VideoComponent} from '../../shared/index';
+import {VideoComponent} from '../../components/video.component';
 
 import { DROPDOWN_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 
