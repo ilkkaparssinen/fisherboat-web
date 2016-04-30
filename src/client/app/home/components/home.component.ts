@@ -15,8 +15,8 @@ export class HomeComponent  {
   newName: string;
   isSelectOpen: boolean = false;
 
-  canvas: any = document.getElementById('videostream');
-  context = canvas.getContext('2d');
+  canvas: any;
+  context:any
   status = {};
   settings = {
     speed_change_cycle:  5,
@@ -35,9 +35,15 @@ export class HomeComponent  {
     this.socketService = socketService;
     this.settings = socketService.getSettings();
     this.socketService.imageChanged.subscribe(image => this.changeImage(image));
+
   }
 
   changeImage(image: any) {
+    console.log(document);
+    this.canvas = document.getElementById('videostream');
+
+    this.context = this.canvas.getContext('2d');
+
     console.log("IMAGE CHANGED");
     console.log(image);
 
