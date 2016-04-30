@@ -11,18 +11,19 @@ import {SocketService} from '../../shared/index';
 export class VideoComponent  {
 
   constructor(public socketService: SocketService) {
+    console.log("CONSTRUCTING VIDEO COMPONENT");
     this.socketService = socketService;
     this.socketService.imageChanged.subscribe(image => this.changeImage(image));
   }
 
-  changeImage(image: any) {
+  changeImage(image) {
     console.log("IMAGE CHANGED EVENT");
     var canvas: any = document.getElementById('videostream');
     if (!canvas) return;
     console.log("DRAW");
     var context = canvas.getContext('2d');
     var imageObj = new Image();
-    imageObj.src = "data:image/jpeg;base64,"+image;
+    imageObj.src = 'data:image/jpeg;base64,'+image;
     imageObj.onload = function(){
       context.height = imageObj.height;
       context.width = imageObj.width;
