@@ -57,6 +57,7 @@ export class SocketService {
 
     }
     if (data.action === 'IMAGE') {
+      console.log("Emitting image");
       this.imageChanged.next(data.image);
     }
   }
