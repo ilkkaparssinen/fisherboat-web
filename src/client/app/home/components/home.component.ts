@@ -41,6 +41,9 @@ export class HomeComponent  {
   changeImage(image: any) {
     console.log("IMAGE CHANGED EVENT");
 
+    var canvas: any = document.getElementById('videostream');
+    if (!canvas) return;
+    console.log("DRAW");
     var context = canvas.getContext('2d');
     var imageObj = new Image();
     imageObj.src = "data:image/jpeg;base64,"+image;
