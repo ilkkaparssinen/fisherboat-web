@@ -21,8 +21,9 @@
   </div>
   <br/>
 
-  <sd-video></sd-video>
-
+  <div id="stream-container">
+    <canvas id="videostream" width="320" height="240" style="border:none;"></canvas>
+  </div>
 
   <label for="speed_change_cycle">Speed change cycle {{settings.speed_change_cycle}} sec</label>
   <input [(ngModel)]="settings.speed_change_cycle" (input)="changeSettings($event)" id="speed_change_cycle" type="range" min="2" max="20" step="1">

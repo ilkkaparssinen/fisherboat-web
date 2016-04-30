@@ -45,9 +45,7 @@ export class StatusComponent {
   }
 
   onStatusChanged():void {
-    console.log('StatuschangEDEDDDDD');
     if (!this) return;
-      console.log('StatuschangEDED THIS WAS');
 
       if (!this.status['longitude']) return;
         this.markers.push({lat: this.status['latitude'],

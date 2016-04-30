@@ -2,7 +2,8 @@ import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
 import {NavbarComponent} from './navbar.component';
 import {ToolbarComponent} from './toolbar.component';
-import {NameListService} from '../shared/index';
+import {VideoComponent} from '../shared/components/video.component';
+
 import {SocketService} from '../shared/index';
 import {HomeComponent} from '../home/index';
 import {AboutComponent} from '../about/index';
@@ -11,7 +12,7 @@ import {StatusComponent} from '../status/index';
 
 @Component({
   selector: 'sd-app',
-  viewProviders: [NameListService, SocketService],
+  viewProviders: [SocketService],
   templateUrl: 'app/components/app.component.html',
   directives: [ROUTER_DIRECTIVES,NavbarComponent, ToolbarComponent]
 })
