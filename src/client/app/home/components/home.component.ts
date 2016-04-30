@@ -10,7 +10,7 @@ import { DROPDOWN_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
   selector: 'sd-home',
   templateUrl: 'app/home/components/home.component.html',
   styleUrls: ['app/home/components/home.component.css'],
-  directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, DROPDOWN_DIRECTIVES]
+  directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, DROPDOWN_DIRECTIVES, VideoComponent]
 })
 
 export class HomeComponent  {
