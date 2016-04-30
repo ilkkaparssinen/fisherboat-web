@@ -39,10 +39,7 @@ export class HomeComponent  {
   }
 
   changeImage(image: any) {
-    console.log(document);
-    this.canvas = document.getElementById('videostream');
-
-    this.context = this.canvas.getContext('2d');
+    console.log("IMAGE CHANGED EVENT");
 
     var context = canvas.getContext('2d');
     var imageObj = new Image();
