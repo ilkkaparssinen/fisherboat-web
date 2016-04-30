@@ -11,9 +11,12 @@ import { DROPDOWN_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
   styleUrls: ['app/home/components/home.component.css'],
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, DROPDOWN_DIRECTIVES]
 })
-export class HomeComponent {
+export class HomeComponent  {
   newName: string;
   isSelectOpen: boolean = false;
+
+  canvas: any = document.getElementById('videostream');
+  context = canvas.getContext('2d');
   status = {};
   settings = {
     speed_change_cycle:  5,
@@ -23,20 +26,27 @@ export class HomeComponent {
     turn: 0.0
   };
 
-  ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
-    console.log("NGONCHANGES");
-    socketService.sendSettings(this.settings);
-    if (changes['fontSize']) { // fire your event }
-    }
-  }
+
 
   constructor(public socketService: SocketService) {
     console.log('Home component');
     console.log(socketService);
     this.status = socketService.getStatus();
+    this.socketService = socketService;
     this.settings = socketService.getSettings();
+    this.socketService.imageChanged.subscribe(image => this.changeImage(image));
   }
 
+  changeImage(image: any) {
+    console.log("IMAGE CHANGED");
+    console.log(image);
+
+  }
+
+  changeSettings(event: any) {
+    console.log("NGONCHANGES");
+    this.socketService.sendSettings(this.settings);
+  }
   /*
    * @param newname  any text as input.
    * @returns return false to prevent default form submit behavior to refresh the page.

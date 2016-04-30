@@ -2,11 +2,11 @@
 <form>
   <br/>
   <label for="speed">Speed {{settings.speed}}</label>
-  <input [(ngModel)]="settings.speed" id="speed" type="range" min="0" max="1" step="0.02">
+  <input [(ngModel)]="settings.speed"  (input)="changeSettings($event)" id="speed" type="range" min="0" max="1" step="0.02">
   <label for="turn">Direction {{settings.turn}}</label>
-  <input [(ngModel)]="settings.turn" id="turn" type="range" min="-1" max="1" step="0.02">
+  <input [(ngModel)]="settings.turn"  (input)="changeSettings($event)" id="turn" type="range" min="-1" max="1" step="0.02">
   <label for="play_music">Play music</label>
-  <input type="checkbox" id="play_music"  [(ngModel)]="settings.play_music">>
+  <input type="checkbox" id="play_music"  (input)="changeSettings($event)" [(ngModel)]="settings.play_music">>
   <br/>
   <div class="btn-group" dropdown [(isOpen)]="isSelectOpen">
     <button id="single-button" type="button" class="btn btn-primary" dropdownToggle [disabled]="disabled">
@@ -20,12 +20,19 @@
     </ul>
   </div>
   <br/>
+
+  <div id="stream-container">
+
+    <canvas id="videostream" width="160" height="144" style="border:solid;"></canvas>
+
+  </div>
+
   <label for="speed_change_cycle">Speed change cycle {{settings.speed_change_cycle}} sec</label>
-  <input [(ngModel)]="settings.speed_change_cycle" id="speed_change_cycle" type="range" min="2" max="20" step="1">
+  <input [(ngModel)]="settings.speed_change_cycle" (input)="changeSettings($event)" id="speed_change_cycle" type="range" min="2" max="20" step="1">
   <label for="speed_motors_full_percent">Full speed {{settings.speed_motors_full_percent}}% of cycle</label>
-  <input [(ngModel)]="settings.speed_motors_full_percent" id="speed_motors_full_percent" type="range" min="0" max="100" step="1">
+  <input [(ngModel)]="settings.speed_motors_full_percent"  (input)="changeSettings($event)" id="speed_motors_full_percent" type="range" min="0" max="100" step="1">
   <label for="low_speed_percent">Low speed {{settings.low_speed_percent}}% of full speed</label>
-  <input [(ngModel)]="settings.low_speed_percent" id="low_speed_percent" type="range" min="0" max="100" step="1">
+  <input [(ngModel)]="settings.low_speed_percent"  (input)="changeSettings($event)" id="low_speed_percent" type="range" min="0" max="100" step="1">
 </form>
 
 

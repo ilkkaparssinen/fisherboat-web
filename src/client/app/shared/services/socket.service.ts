@@ -4,6 +4,7 @@ import {EventEmitter} from 'angular2/core';
 export class SocketService {
   settingsChanged: EventEmitter = new EventEmitter();
   statusChanged: EventEmitter = new EventEmitter();
+  imageChanged: EventEmitter = new EventEmitter();
 
   status = {};
   settings: any = {};
@@ -54,6 +55,9 @@ export class SocketService {
       console.log('NEW SETTINGS');
       console.log(this.settings);
 
+    }
+    if (data.action === 'IMAGE') {
+      this.imageChanged.next(data.image);
     }
   }
   constructor() {
