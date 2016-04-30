@@ -4,8 +4,8 @@ import {SocketService} from '../../shared/index';
 
 @Component({
   selector: 'sd-video',
-  templateUrl: 'app/shared/components/video.component.html',
-  styleUrls: ['app/shared/components/video.component.css'],
+  templateUrl: 'app/components/video.component.html',
+  styleUrls: ['app/components/video.component.css'],
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class VideoComponent  {
