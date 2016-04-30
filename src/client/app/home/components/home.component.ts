@@ -44,8 +44,15 @@ export class HomeComponent  {
 
     this.context = this.canvas.getContext('2d');
 
-    console.log("IMAGE CHANGED");
-    console.log(image);
+    var context = canvas.getContext('2d');
+    var imageObj = new Image();
+    imageObj.src = "data:image/jpeg;base64,"+image;
+    imageObj.onload = function(){
+      context.height = imageObj.height;
+      context.width = imageObj.width;
+      context.drawImage(imageObj,0,0,context.width,context.height);
+    }
+
 
   }
 
