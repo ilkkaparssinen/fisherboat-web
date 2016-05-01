@@ -27,9 +27,7 @@ export class ToolbarComponent   {
   }
 
   sendChat() {
-    var send: any;
-    Object.assign(send,this.chat);
-    this.socketService.sendChat(send);
+    this.socketService.sendChat(this.chat);
   }
   guidGenerator() {
     var S4 = function () {
