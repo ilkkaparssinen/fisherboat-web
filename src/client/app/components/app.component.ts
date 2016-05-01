@@ -2,8 +2,6 @@ import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
 import {NavbarComponent} from './navbar.component';
 import {ToolbarComponent} from './toolbar.component';
-import {VideoComponent} from '../shared/components/video.component';
-
 import {SocketService} from '../shared/index';
 import {HomeComponent} from '../home/index';
 import {AboutComponent} from '../about/index';

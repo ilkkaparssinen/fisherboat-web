@@ -5,9 +5,11 @@ export class SocketService {
   settingsChanged: EventEmitter = new EventEmitter();
   statusChanged: EventEmitter = new EventEmitter();
   imageChanged: EventEmitter = new EventEmitter();
+  messagesChanged: EventEmitter = new EventEmitter();
 
   status = {};
   settings: any = {};
+  messages: any = [];
   private host = window.document.location.host.replace(/:.*/, '');
   private ws:any;
 
@@ -42,7 +44,6 @@ export class SocketService {
   }
 
   onmessage(event): void {
-    console.log(event);
     var data = JSON.parse(event.data);
     if (data.action === 'STATUS') {
       Object.assign(this.status, data);
@@ -59,8 +60,14 @@ export class SocketService {
       console.log(this.settings);
 
     }
+    if (data.action === 'MESSAGE') {
+      this.messages.unshift(data.message);
+      if (this.messages.length > 10) {
+        this.messages.splice(this.messages.length - 1,1);
+      }
+      this.messagesChanged.next(data.image);
+    }
     if (data.action === 'IMAGE') {
-      console.log("Emitting image");
       this.imageChanged.next(data.image);
     }
   }

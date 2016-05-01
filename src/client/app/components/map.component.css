@@ -1,4 +1,9 @@
 
 .sebm-google-map-container {
-  height: 600px;
+  height: 480px;
+}
+
+.maptext {
+  color: #dd3333;
+  /*  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; */
 }

@@ -18,6 +18,7 @@ interface Marker {
     draggable: boolean;
 }
 
+
 @Component({
   selector: 'sd-map',
   templateUrl: 'app/components/map.component.html',
@@ -44,6 +45,11 @@ export class MapComponent {
         this.markers.push({lat: this.status['latitude'],
           lng: this.status['longitude'], draggable: false
     });
+      var dirimage: any = document.getElementById('directionarrow');
+      dirimage.style.transform='rotate(' + this.status["track"] + 'deg)';
+
+      // document.getElementById("mapcomponent").style.height = "100px";
+
     console.log('Markers');
     console.log(this.markers);
   }

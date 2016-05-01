@@ -35,8 +35,20 @@ export class HomeComponent  {
     this.status = socketService.getStatus();
     this.socketService = socketService;
     this.settings = socketService.getSettings();
+    socketService.statusChanged.subscribe((data) => {
+      this.onStatusChanged();
+    });
 
   }
+  onStatusChanged():void {
+    if (!this) return;
+
+    if (!this.status['track']) return;
+    console.log("Rotate");
+
+  }
+
+
 
   changeSettings(event: any) {
     console.log("CHANGING SETTINGS BY USER");

@@ -46,12 +46,16 @@ export class SettingsComponent  {
     this.settings.speed_change_cycle = 8;
     this.settings.low_speed_percent = 50;
     this.settings.speed_motors_full_percent = 50;
+    this.socketService.sendSettings(this.settings);
+
     return false;
   }
   setStationary(): boolean {
     this.settings.speed = 0;
     this.settings.low_speed_percent = 100;
     this.settings.speed_motors_full_percent = 100;
+    this.socketService.sendSettings(this.settings);
+
     return false;
   }
 
@@ -59,6 +63,8 @@ export class SettingsComponent  {
     this.settings.speed_change_cycle = 8;
     this.settings.low_speed_percent = 0;
     this.settings.speed_motors_full_percent = 50;
+    this.socketService.sendSettings(this.settings);
+
     return false;
   }
 
@@ -66,6 +72,8 @@ export class SettingsComponent  {
     this.settings.speed_change_cycle = 8;
     this.settings.low_speed_percent = 100;
     this.settings.speed_motors_full_percent = 100;
+    this.socketService.sendSettings(this.settings);
+
     return false;
   }
 
