@@ -25,8 +25,8 @@ export class VideoComponent  {
     var imageObj = new Image();
     imageObj.src = 'data:image/jpeg;base64,'+image;
     imageObj.onload = function(){
-      context.height = imageObj.height;
-      context.width = imageObj.width;
+      context.height = imageObj.height * 2;
+      context.width = imageObj.width * 2;
       context.drawImage(imageObj,0,0,context.width,context.height);
     }
   }

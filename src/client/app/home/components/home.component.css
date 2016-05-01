@@ -32,6 +32,7 @@ input[type=range] {
 
   /*required for proper track sizing in FF*/
   width: 200px;
+  opacity: 0.7;
 }
 input[type=range]::-webkit-slider-runnable-track {
   width: 200px;
@@ -39,6 +40,7 @@ input[type=range]::-webkit-slider-runnable-track {
   background: #ddd;
   border: none;
   border-radius: 3px;
+  opacity: 1.5;
 }
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -46,6 +48,7 @@ input[type=range]::-webkit-slider-thumb {
   height: 16px;
   width: 16px;
   border-radius: 50%;
+  opacity: 1.5;
   background: #dd3333;
   margin-top: -4px;
 }
@@ -68,7 +71,7 @@ input[type=range]::-moz-range-thumb {
   height: 16px;
   width: 16px;
   border-radius: 50%;
-  background: goldenrod;
+  background: #dd3333;
 }
 
 /*hide the outline behind the border*/
@@ -104,7 +107,7 @@ input[type=range]::-ms-thumb {
   height: 16px;
   width: 16px;
   border-radius: 50%;
-  background: goldenrod;
+  background: #dd3333;
 }
 input[type=range]:focus::-ms-fill-lower {
   background: #888;

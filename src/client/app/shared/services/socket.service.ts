@@ -36,6 +36,8 @@ export class SocketService {
     Object.assign(message, settings);
     message.topic = "TEST";
     message.action = "SETTINGS";
+    console.log("Sending settings");
+    console.log(JSON.stringify(message));
     this.ws.send(JSON.stringify(message));
   }
 

@@ -39,6 +39,7 @@ export class HomeComponent  {
   }
 
   changeSettings(event: any) {
+    console.log("CHANGING SETTINGS BY USER");
     this.socketService.sendSettings(this.settings);
   }
 
