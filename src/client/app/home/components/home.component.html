@@ -9,7 +9,15 @@
          <br/>
          <label class="maptext" for="turn">Direction {{settings.turn}}</label>
          <input [(ngModel)]="settings.turn"  (input)="changeSettings($event)" id="turn" type="range" min="-1" max="1" step="0.02">
+
+
         </div>
+        <div style="position: absolute;top:1em;right:16px;">
+            <div *ngFor="#message of messages; #i = index"  [ngStyle]="{'font-size': (16 - (i / 4)).toString() + 'px'}"  [style.opacity]="(20 - i) / 20.0">
+                {{ message.message }}
+            </div>
+        </div>
+
 
     </div>
 

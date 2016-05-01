@@ -16,6 +16,7 @@ interface Marker {
     lng: number;
     label?: string;
     draggable: boolean;
+    iconUrl: string;
 }
 
 
@@ -28,7 +29,7 @@ interface Marker {
 export class MapComponent {
   status = {latitude: 62.0, longitude: 20.0};
   mapsettings = {zoom: 17};
-  markers: Marker[] = [{lat: 62.0, lng: 20.0}];
+  markers: Marker[] = [{lat: 62.0, lng: 20.0, draggable: false, iconUrl: ''}];
 
   constructor(public socketService: SocketService) {
         console.log('Mapcomponent');
@@ -42,16 +43,14 @@ export class MapComponent {
     if (!this) return;
 
       if (!this.status['longitude']) return;
-        this.markers.push({lat: this.status['latitude'],
-          lng: this.status['longitude'], draggable: false
-    });
+
+      this.markers.push({lat: this.status['latitude'],
+          lng: this.status['longitude'], draggable: false,
+          iconUrl: 'assets/png/ship.png'
+        });
       var dirimage: any = document.getElementById('directionarrow');
       dirimage.style.transform='rotate(' + this.status["track"] + 'deg)';
 
-      // document.getElementById("mapcomponent").style.height = "100px";
-
-    console.log('Markers');
-    console.log(this.markers);
   }
 }
 

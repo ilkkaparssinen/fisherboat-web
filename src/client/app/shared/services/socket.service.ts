@@ -25,6 +25,7 @@ export class SocketService {
         this.onmessage(event);
       };
       this.ws.send(JSON.stringify({topic: 'TEST',type: 'CLIENT', action: 'SUBSCRIBE'}));
+      this.sendMessage("Somebody started a web client");
     };
   }
   getSettings(): any {
@@ -33,12 +34,26 @@ export class SocketService {
   getStatus(): any {
     return this.status;
   }
+  getMessages(): any {
+    return this.messages;
+  }
   sendSettings(settings): void {
     var message: any= {};
     Object.assign(message, settings);
     message.topic = "TEST";
     message.action = "SETTINGS";
     console.log("Sending settings");
+    console.log(JSON.stringify(message));
+    this.ws.send(JSON.stringify(message));
+  }
+
+  sendChat(chat): void {
+    var message: any= {};
+    message.topic = "TEST";
+    message.action = "MESSAGE";
+    message.message = chat.message;
+    message.id = chat.id;
+    console.log("Sending chat message");
     console.log(JSON.stringify(message));
     this.ws.send(JSON.stringify(message));
   }
@@ -61,10 +76,30 @@ export class SocketService {
 
     }
     if (data.action === 'MESSAGE') {
-      this.messages.unshift(data.message);
-      if (this.messages.length > 10) {
+      if (data.id && data.id > "") {
+        let found = false;
+        console.log(data.id);
+        // Update existing data
+        for (let i = 0; i < this.messages.length; i++) {
+          if (this.messages[i].id === data.id) {
+            this.messages[i].message = data.message;
+            found = true;
+            console.log("FOUND");
+
+            break;
+          }
+        }
+        if (!found)  {
+          this.messages.unshift({message: data.message, id: data.id});
+        }
+      } else {
+        this.messages.unshift({message: data.message, id: ""});
+      }
+
+      if (this.messages.length > 20) {
         this.messages.splice(this.messages.length - 1,1);
       }
+      console.log(this.messages);
       this.messagesChanged.next(data.image);
     }
     if (data.action === 'IMAGE') {

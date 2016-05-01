@@ -2,7 +2,8 @@
 <form>
   <br/>
   <label for="play_music">Play music</label>
-  <input type="checkbox" id="play_music"  (input)="changeSettings($event)" [(ngModel)]="settings.play_music">
+  <input #playmusicid type="checkbox" (change)="settings.play_music = playmusicid.checked;changeSettings($event)" />
+
   <br/>
   <div class="btn-group" dropdown [(isOpen)]="isSelectOpen">
     <button id="single-button" type="button" class="btn btn-primary" dropdownToggle [disabled]="disabled">

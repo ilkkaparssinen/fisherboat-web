@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 
 import {SocketService} from '../../shared/index';
+
 import {VideoComponent} from '../../components/video.component';
 import {MapComponent} from '../../components/map.component';
 
@@ -28,6 +29,7 @@ export class HomeComponent  {
     speed: 0.2,
     turn: 0.0
   };
+  messages: any;
 
   constructor(public socketService: SocketService) {
     console.log('Home component');
@@ -35,20 +37,8 @@ export class HomeComponent  {
     this.status = socketService.getStatus();
     this.socketService = socketService;
     this.settings = socketService.getSettings();
-    socketService.statusChanged.subscribe((data) => {
-      this.onStatusChanged();
-    });
-
+    this.messages = socketService.getMessages();
   }
-  onStatusChanged():void {
-    if (!this) return;
-
-    if (!this.status['track']) return;
-    console.log("Rotate");
-
-  }
-
-
 
   changeSettings(event: any) {
     console.log("CHANGING SETTINGS BY USER");
