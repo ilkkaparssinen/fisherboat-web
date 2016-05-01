@@ -19,7 +19,6 @@ export class SocketService {
     this.ws = new WebSocket('ws://' + this.host + ':8080');
     console.log('CONNECTIng');
 
-    this.myid = this.guidGenerator();
     this.ws.onopen = (event:Event) => {
       this.ws.onmessage = (event) => {
         this.onmessage(event);
@@ -92,10 +91,10 @@ export class SocketService {
           }
         }
         if (!found)  {
-          this.messages.unshift({message: data.message, id: data.id});
+          this.messages.unshift({message: data.message, id: data.id, who: data.who});
         }
       } else {
-        this.messages.unshift({message: data.message, id: ""});
+        this.messages.unshift({message: data.message, id: "", who: data.who});
       }
 
       if (this.messages.length > 20) {
@@ -111,6 +110,7 @@ export class SocketService {
   constructor() {
     console.log('Socket service');
     this.connect();
+    this.myid = this.guidGenerator();
   }
   guidGenerator() {
     var S4 = function () {
