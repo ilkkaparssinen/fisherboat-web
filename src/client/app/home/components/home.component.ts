@@ -18,7 +18,7 @@ import { DROPDOWN_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 export class HomeComponent  {
   newName: string;
   isSelectOpen: boolean = false;
-
+  myid:string = "";
   canvas: any;
   context:any;
   status = {};
@@ -38,6 +38,7 @@ export class HomeComponent  {
     this.socketService = socketService;
     this.settings = socketService.getSettings();
     this.messages = socketService.getMessages();
+    this.myid = socketService.myid;
   }
 
   changeSettings(event: any) {

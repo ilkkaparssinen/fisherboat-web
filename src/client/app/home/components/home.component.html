@@ -13,7 +13,11 @@
 
         </div>
         <div style="position: absolute;top:1em;right:16px;">
-            <div *ngFor="#message of messages; #i = index"  [ngStyle]="{'font-size': (16 - (i / 4)).toString() + 'px'}"  [style.opacity]="(20 - i) / 20.0">
+            <div *ngFor="#message of messages; #i = index"
+                class="chatfont"
+                [ngStyle]="{'font-size': (16 - (i / 4)).toString() + 'px',
+                'color': (message.who === myid)  ? '#222' : '#0000ff'
+                }"  [style.opacity]="(20 - i) / 20.0">
                 {{ message.message }}
             </div>
         </div>

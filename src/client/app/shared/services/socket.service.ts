@@ -6,7 +6,7 @@ export class SocketService {
   statusChanged: EventEmitter = new EventEmitter();
   imageChanged: EventEmitter = new EventEmitter();
   messagesChanged: EventEmitter = new EventEmitter();
-
+  myid: string = "";
   status = {};
   settings: any = {};
   messages: any = [];
@@ -19,13 +19,13 @@ export class SocketService {
     this.ws = new WebSocket('ws://' + this.host + ':8080');
     console.log('CONNECTIng');
 
-
+    this.myid = this.guidGenerator();
     this.ws.onopen = (event:Event) => {
       this.ws.onmessage = (event) => {
         this.onmessage(event);
       };
       this.ws.send(JSON.stringify({topic: 'TEST',type: 'CLIENT', action: 'SUBSCRIBE'}));
-      this.sendMessage("Somebody started a web client");
+      this.sendChat({message: "Somebody started a web client", id: ""});
     };
   }
   getSettings(): any {
@@ -52,6 +52,7 @@ export class SocketService {
     message.topic = "TEST";
     message.action = "MESSAGE";
     message.message = chat.message;
+    message.who = this.myid;
     message.id = chat.id;
     console.log("Sending chat message");
     console.log(JSON.stringify(message));
@@ -76,6 +77,7 @@ export class SocketService {
 
     }
     if (data.action === 'MESSAGE') {
+      if (!data.who) data.who = "";
       if (data.id && data.id > "") {
         let found = false;
         console.log(data.id);
@@ -110,6 +112,13 @@ export class SocketService {
     console.log('Socket service');
     this.connect();
   }
+  guidGenerator() {
+    var S4 = function () {
+      return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+  }
+
 }
 
 
