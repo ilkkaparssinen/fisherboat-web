@@ -11,6 +11,7 @@ export class SocketService {
   private host = window.document.location.host.replace(/:.*/, '');
   private ws:any;
 
+  host = "52.51.75.200";
 
   connect(): void {
     this.ws = new WebSocket('ws://' + this.host + ':8080');

@@ -1,0 +1,28 @@
+
+<form>
+  <br/>
+  <label for="play_music">Play music</label>
+  <input type="checkbox" id="play_music"  (input)="changeSettings($event)" [(ngModel)]="settings.play_music">
+  <br/>
+  <div class="btn-group" dropdown [(isOpen)]="isSelectOpen">
+    <button id="single-button" type="button" class="btn btn-primary" dropdownToggle [disabled]="disabled">
+      Fishing style <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+      <li role="menuitem"><a class="dropdown-item" href="#" (click)="setNormal()">Constant speed</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="#" (click)="setVarying()">Varying speed</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="#" (click)="setStationary()">Stationary</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="#" (click)="setJigging()">Jigging</a></li>
+    </ul>
+  </div>
+  <br/>
+  <label for="speed_change_cycle">Speed change cycle {{settings.speed_change_cycle}} sec</label>
+  <input [(ngModel)]="settings.speed_change_cycle" (input)="changeSettings($event)" id="speed_change_cycle" type="range" min="2" max="20" step="1">
+  <label for="speed_motors_full_percent">Full speed {{settings.speed_motors_full_percent}}% of cycle</label>
+  <input [(ngModel)]="settings.speed_motors_full_percent"  (input)="changeSettings($event)" id="speed_motors_full_percent" type="range" min="0" max="100" step="1">
+  <label for="low_speed_percent">Low speed {{settings.low_speed_percent}}% of full speed</label>
+  <input [(ngModel)]="settings.low_speed_percent"  (input)="changeSettings($event)" id="low_speed_percent" type="range" min="0" max="100" step="1">
+</form>
+
+
+

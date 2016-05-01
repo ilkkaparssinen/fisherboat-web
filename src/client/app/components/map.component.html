@@ -1,0 +1,16 @@
+<sebm-google-map
+        [latitude]="status.latitude" [longitude]="status.longitude"
+        [zoom]="mapsettings.zoom"
+        [disableDefaultUI]="false"
+        (mapClick)="mapClicked($event)">
+
+  <sebm-google-map-marker
+          *ngFor="#m of markers; #i = index"
+          (markerClick)="clickedMarker(m.label, i)"
+          [latitude]="m.lat"
+          [longitude]="m.lng"
+          [label]="m.label"
+          [markerDraggable]="m.draggable"
+          (dragEnd)="markerDragEnd(m, $event)"></sebm-google-map-marker>
+
+</sebm-google-map>

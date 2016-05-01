@@ -7,7 +7,7 @@ import {VideoComponent} from '../shared/components/video.component';
 import {SocketService} from '../shared/index';
 import {HomeComponent} from '../home/index';
 import {AboutComponent} from '../about/index';
-import {StatusComponent} from '../status/index';
+import {SettingsComponent} from '../settings/index';
 
 
 @Component({
@@ -27,9 +27,9 @@ import {StatusComponent} from '../status/index';
     name: 'About',
     component: AboutComponent
   }, {
-    path: '/status',
-    name: 'Status',
-    component: StatusComponent
+    path: '/settings',
+    name: 'Settings',
+    component: SettingsComponent
   }
 ])
 export class AppComponent {}
