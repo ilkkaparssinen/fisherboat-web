@@ -4,6 +4,12 @@
 }
 
 .maparrow {
-  color: #33d;
+   color: #55e;
+   /*  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; */
+ }
+
+.speedtext {
+  color: #fff;
+  font-size: 1.3em;
   /*  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; */
 }

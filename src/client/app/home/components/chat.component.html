@@ -1,0 +1,11 @@
+<div class="chatbackground" style="height:100%;padding-top:8px;" >
+    <div *ngFor="#message of messages; #i = index"
+                class="chatfont chatline"
+                [ngStyle]="{'font-size': (16 - (i / 4)).toString() + 'px',
+                'color': (message.who === myid)  ? '#fff' : '#aaaaff'
+                }"  [style.opacity]="(20 - i) / 20.0">
+               {{ message.message }}
+    </div>
+</div>
+
+

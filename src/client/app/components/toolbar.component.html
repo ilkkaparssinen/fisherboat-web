@@ -7,4 +7,15 @@
 <i class="fa fa-check" aria-hidden="true" (click)="checkChat()" style="font-size:24px;color:#d33;position:absolute;top:2px;right:0px;cursor:pointer;"></i>
 </div>
 
-<more [routerLink]="['About']"></more>
+<div class="btn-group" dropdown [(isOpen)]="status.isopen" style="float:right;">
+        <more id="single-button" type="button" class="btn btn-link" dropdownToggle [disabled]="disabled"
+                style="padding-left:20px;padding-right:15px;padding-top: 15px; padding-bottom: 15px;">
+
+        </more>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="single-button">
+                <li role="menuitem"><a class="dropdown-item" [routerLink]="['Home']"><b>Drive</b></a></li>
+                <li role="menuitem"><a class="dropdown-item" [routerLink]="['Settings']"><b>Settings</b></a></li>
+                <li class="divider dropdown-divider"></li>
+                <li role="menuitem"><a class="dropdown-item" [routerLink]="['About']"><b>About</b></a></li>
+        </ul>
+</div>

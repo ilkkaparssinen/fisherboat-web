@@ -50,6 +50,8 @@ export class MapComponent {
         });
       var dirimage: any = document.getElementById('directionarrow');
       dirimage.style.transform='rotate(' + this.status["track"] + 'deg)';
+      var speedtext: any = document.getElementById('speedtext');
+    //  speedtext.style.transform='rotate(' + this.status["track"] + 'deg)';
 
   }
 }

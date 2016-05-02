@@ -1,6 +1,6 @@
 :host {
   display: block;
-  padding: 0 16px;
+  padding: 0 0px;
 }
 
 input {
@@ -11,9 +11,93 @@ ul {
   list-style-type: none;
   padding: 0 0 0 8px;
 }
+.videobackground {
+  background-color: #223;
+}
+@media screen and (orientation:portrait) {
+  .maparea {
+    height: 35vh;
+    width: 100%;
+  }
+  .chatarea {
+    height: 20vh;
+    width: 100%;
+  }
+  .videoarea {
+    height: 30vh;
+    width: 100%;
+  }
+  .slider-vertical {
+    position:absolute;
+    bottom:85px;
+    left: -10px;
+    width: 120px;
+  }
+  .slider-horizontal {
+    width: 200px;
+  }
+  .text-vertical {
+    left:1em;
+  }
 
+
+}
+@media screen and (orientation:landscape) {
+  .maparea {
+    height: 90vh;
+    width: 34vw;
+    position: absolute;
+    top: 0px;
+    left: 33vw;
+  }
+  .chatarea {
+    position: absolute;
+    top: 0px;
+    left: 0vh;
+    height: 90vh;
+    width: 33vw;
+  }
+  .videoarea {
+    position: absolute;
+    top: 0px;
+    left: 67vw;
+
+    height: 90vh;
+    width: 33vw;
+  }
+  .slider-vertical {
+    position:absolute;
+    bottom:150px;
+    left:-4em;
+    width: 200px;
+  }
+  .text-vertical {
+   left:1em;
+  }
+  .slider-horizontal {
+    width: 20vw;
+  }
+
+
+
+}
+.inner {
+
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 1em;
+  line-height: 1em;
+  height: 1em;
+  width: 1em;
+  overflow: visible;
+  white-space: nowrap;
+}
 .maptext {
-  color: #dd3333;
+  color: #ffffff;
+  height: 1em;
+  text-align: center;
+  line-height: 1em;
 /*  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; */
 }
 
@@ -21,102 +105,39 @@ body {
   padding: 30px;
 }
 
-.chatfont {
-  font-family: Consolas, monaco, monospace;
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
 }
-
 body {
   padding: 30px;
 }
-input[type=range] {
-  /*removes default webkit styles*/
-  -webkit-appearance: none;
 
-  /*fix for FF unable to apply focus style bug */
-  border: 1px solid white;
+.vertical-element {
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+  transform: rotate(-90deg);
+}
 
-  /*required for proper track sizing in FF*/
-  width: 200px;
-  opacity: 0.7;
-}
-input[type=range]::-webkit-slider-runnable-track {
-  width: 200px;
-  height: 5px;
-  background: #ddd;
-  border: none;
-  border-radius: 3px;
-  opacity: 1.5;
-}
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  border: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  opacity: 1.5;
-  background: #dd3333;
-  margin-top: -4px;
-}
 input[type=range]:focus {
   outline: none;
 }
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #ccc;
+#demo {
+  position: absolute;
+  top: 0px; left: 0px;
+  right: 0px; bottom: 0px;
 }
-
-input[type=range]::-moz-range-track {
-  width: 300px;
-  height: 5px;
-  background: #ddd;
-  border: none;
-  border-radius: 3px;
+#code {
+  border: 1px solid #000;
+  background-color: rgba(255,255,255,0.95);
+  padding: 0.5em;
+  margin: 1em;
 }
-input[type=range]::-moz-range-thumb {
-  border: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: #dd3333;
-}
-
-/*hide the outline behind the border*/
-input[type=range]:-moz-focusring{
-  outline: 1px solid #888888;
-  outline-offset: -1px;
-}
-
-input[type=range]::-ms-track {
-  width: 300px;
-  height: 5px;
-
-  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
-  background: transparent;
-
-  /*leave room for the larger thumb to overflow with a transparent border */
-  border-color: transparent;
-  border-width: 6px 0;
-
-  /*remove default tick marks*/
-  color: transparent;
-}
-input[type=range]::-ms-fill-lower {
-  background: #777;
-  border-radius: 10px;
-}
-input[type=range]::-ms-fill-upper {
-  background: #ddd;
-  border-radius: 10px;
-}
-input[type=range]::-ms-thumb {
-  border: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: #dd3333;
-}
-input[type=range]:focus::-ms-fill-lower {
-  background: #888;
-}
-input[type=range]:focus::-ms-fill-upper {
-  background: #ccc;
+svg {
+  display: none;
 }

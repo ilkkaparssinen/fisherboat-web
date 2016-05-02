@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  padding: 0 0px;
+}
+
+.chatbackground {
+ background-color: transparent;
+}
+
+.chatfont {
+  font-family: Consolas, monaco, monospace;
+}
+
+.chatline {
+  margin-left: 16px;
+}

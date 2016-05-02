@@ -17,15 +17,17 @@ h1 {
 more {
   background: url("./assets/svg/more.svg");
   float: right;
+  background-repeat: no-repeat;
+  background-position: right;
   height: 24px;
   margin-top: 12px;
   width: 24px;
 }
 
 .chatbox {
-  font-size: 16px;
+  font-size: 18px;
   border-radius: 10px ;
   border-color: #aaa;
-  height: 28px;
+  height: 30px;
   color: #444;
 }

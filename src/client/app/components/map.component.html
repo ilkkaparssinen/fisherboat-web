@@ -1,8 +1,9 @@
-<div>
+<div style="height:100%">
 
 <sebm-google-map
         id="mapcomponent"
-        style="height:calc(100vh - 6em);"
+        style="height:100%;"
+        backgroundColor="#222233"
         [latitude]="status.latitude" [longitude]="status.longitude"
         [zoom]="mapsettings.zoom"
         [disableDefaultUI]="false"
@@ -21,8 +22,11 @@
 
 </sebm-google-map>
 
-        <i id="directionarrow" class="fa fa-arrow-up maparrow" style="font-size:2em;position:absolute;top:45%;left:48%;" aria-hidden="true">
+        <i id="directionarrow" class="fa fa-arrow-up maparrow" style="font-size:4em;position:absolute;top:45%;left:48%;" aria-hidden="true">
         </i>
+        <div id="speedtext" class="speedtext" style="position:absolute;top:45%;left:48%;">
+                {{status.speed}} km/h
+        </div>
 
 </div>
 
