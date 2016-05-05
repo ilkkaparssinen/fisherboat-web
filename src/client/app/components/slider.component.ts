@@ -1,7 +1,7 @@
 /* AWful hack to try to make a slider that works nicely (browser native slider in iOS is way too small) */
 
 
-import {Component,EventEmitter, Input} from 'angular2/core';
+import {Component,EventEmitter, Input, ElementRef} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES,Validators,
     Control,
     ControlGroup,
@@ -21,7 +21,7 @@ export class SliderComponent implements ControlValueAccessor {
   private _value: number ;
   private _min: number ;
   private _max: number ;
-
+  private _elementid: any;
   myvertical: boolean = false;
   @Input() set min (value) {
     this._min = parseFloat(value);
@@ -45,7 +45,11 @@ export class SliderComponent implements ControlValueAccessor {
   onChange: EventEmitter<any> = new EventEmitter();
   onTouched: any;
 
-  constructor(private cd: NgControl) {
+  constructor(myElement: ElementRef,private cd: NgControl) {
+    console.log("REF");
+    console.log(myElement);
+    this._elementid = myElement.nativeElement.id);
+    console.log(this._elementid);
     cd.valueAccessor = this;
   }
 
@@ -60,28 +64,30 @@ export class SliderComponent implements ControlValueAccessor {
   }
   mouseEvent(event) {
     var positionInfo;
+    var slider;
+    var offset;
     console.log(event);
+    console.log(this._elementid);
+
+    slider = document.getElementById(this._elementid).firstElementChild;
+    console.log(slider);
+    var bodyRect = document.body.getBoundingClientRect(),
+        elemRect = slider.getBoundingClientRect();
+
+    console.log('Element is ' + offset + ' vertical pixels from <body>');
+
     if (this.myvertical) {
-      if (event.path[0].id === "slider2") {
-        positionInfo = event.path[0].getBoundingClientRect();
-        this.width = positionInfo.height - 30;
-        this.offsetCount(this.width - event.offsetY);
-      } else if (event.path[0].id === "sliderpointer2") {
-        positionInfo = event.path[1].getBoundingClientRect();
-        this.width = positionInfo.height - 30;
-        this.offsetCount(this.width - event.offsetY - this.x);
-      }
+      offset = elemRect.top - bodyRect.top;
+      offset = event.clientY - offset;
+      this.width = elemRect.height - 15;
+      offset = this.width - offset;
+
     } else {
-      if (event.path[0].id === "slider") {
-        positionInfo = event.path[0].getBoundingClientRect();
-        this.width = positionInfo.width - 30;
-        this.offsetCount(event.offsetX);
-      } else if (event.path[0].id === "sliderpointer") {
-        positionInfo = event.path[1].getBoundingClientRect();
-        this.width = positionInfo.width - 30;
-        this.offsetCount(event.offsetX + this.x);
-      }
+      offset = elemRect.left - bodyRect.left;
+      offset = event.clientX - offset;
+      this.width = elemRect.width - 15;
     }
+    this.offsetCount(offset);
   }
   mousemoveEvent(event) {
     if (event.buttons != 1) return;
