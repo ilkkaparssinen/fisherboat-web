@@ -1,7 +1,7 @@
 
 <form>
   <br/>
-  <label for="play_music">Play music</label>
+  <label for="play_music" class="label-texts">Play music</label>
   <input #playmusicid type="checkbox" (change)="settings.play_music = playmusicid.checked;changeSettings($event)" />
 
   <br/>
@@ -17,11 +17,11 @@
     </ul>
   </div>
   <br/>
-  <label for="speed_change_cycle">Speed change cycle {{settings.speed_change_cycle}} sec</label>
+  <label for="speed_change_cycle" class="label-texts">Speed change cycle {{settings.speed_change_cycle}} sec</label>
   <input [(ngModel)]="settings.speed_change_cycle" (input)="changeSettings($event)" id="speed_change_cycle" type="range" min="2" max="20" step="1">
-  <label for="speed_motors_full_percent">Full speed {{settings.speed_motors_full_percent}}% of cycle</label>
-  <input [(ngModel)]="settings.speed_motors_full_percent"  (input)="changeSettings($event)" id="speed_motors_full_percent" type="range" min="0" max="100" step="1">
-  <label for="low_speed_percent">Low speed {{settings.low_speed_percent}}% of full speed</label>
+  <label for="speed_motors_full_percent" class="label-texts">Full speed {{settings.speed_motors_full_percent}}% of cycle</label>
+  <input [(ngModel)]="settings.speed_motors_full_percent"   (input)="changeSettings($event)" id="speed_motors_full_percent" type="range" min="0" max="100" step="1">
+  <label for="low_speed_percent" class="label-texts">Low speed {{settings.low_speed_percent}}% of full speed</label>
   <input [(ngModel)]="settings.low_speed_percent"  (input)="changeSettings($event)" id="low_speed_percent" type="range" min="0" max="100" step="1">
 </form>
 

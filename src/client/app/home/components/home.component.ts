@@ -56,9 +56,9 @@ export class HomeComponent  implements OnInit {
 // Encode the SVG as base64
     var b64 = 'data:image/svg+xml;base64,'+window.btoa(div.innerHTML);
     var url = 'url("' + b64 + '")';
-    console.log(b64);
     demo.style.backgroundImage = url;
-    demo = document.getElementById('videobg');
+
+    demo = document.getElementsByTagName('body')[0];
     demo.style.backgroundImage = url;
   }
 

@@ -1,4 +1,4 @@
-<div style="position: relative;" id="homecomponent">
+<div  id="homecomponent" style="position:relative">
     <div class="chatarea" id="chatbg">
         <sd-chat style="height:100%;"></sd-chat>
     </div>
@@ -9,24 +9,24 @@
     </div>
 
 
-    <div class="videoarea videobackground" id="videobg">
+    <div class="videoarea" id="videobg">
         <sd-video></sd-video>
 
         <sd-slider class="slider-vertical" (input)="changeSettings($event)"
                    id="speed" min="0" max="1" [(ngModel)]="settings.speed" vertical="true"
-                   step="0.02">
+                   >
         </sd-slider>
 
         <div class="maptext vertical-element noselect  inner text-vertical" for="speed"
              style="position:absolute;bottom:60px">Speed {{settings.speed}}
         </div>
 
-        <sd-slider class="slider-horizontal" style="position: absolute;bottom:1em;left:5em;" (input)="changeSettings($event)"
+        <sd-slider class="slider-horizontal" style="position: absolute;bottom:0.3em;left:5em;" (input)="changeSettings($event)"
              id="turn" min="-1.0" max="1" [(ngModel)]="settings.turn" vertical="false"
-                   step="0.02">
+                   >
         </sd-slider>
 
-        <div style="position: absolute;bottom:3.3em;left:5em;" class="maptext" for="turn">Direction
+        <div style="position: absolute;bottom:2.5em;left:7em;" class="maptext" for="turn">Direction
             {{settings.turn}}
         </div>
 

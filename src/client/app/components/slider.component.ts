@@ -44,6 +44,8 @@ export class SliderComponent implements ControlValueAccessor {
 
   onChange: EventEmitter<any> = new EventEmitter();
   onTouched: any;
+  mousedown = 0;
+
 
   constructor(myElement: ElementRef,private cd: NgControl) {
     console.log("REF");
@@ -66,6 +68,7 @@ export class SliderComponent implements ControlValueAccessor {
     var positionInfo;
     var slider;
     var offset;
+
     console.log(event);
     console.log(this._elementid);
 
@@ -89,8 +92,16 @@ export class SliderComponent implements ControlValueAccessor {
     }
     this.offsetCount(offset);
   }
+
+  onMouseDown(event) {
+    this.mousedown = 1;
+  }
+  onMouseUp (event) {
+    this.mousedown = 0;
+  }
+
   mousemoveEvent(event) {
-    if (event.buttons != 1) return;
+    if (this.mousedown != 1) return;
     this.mouseEvent(event);
   }
   offsetCount(offsetX) {

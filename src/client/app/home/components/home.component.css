@@ -11,9 +11,7 @@ ul {
   list-style-type: none;
   padding: 0 0 0 8px;
 }
-.videobackground {
-  background-color: #223;
-}
+
 @media screen and (orientation:portrait) {
   .maparea {
     height: 30vh;
@@ -30,7 +28,7 @@ ul {
   .slider-vertical {
     position:absolute;
     bottom:40px;
-    left: 4em;
+    left: 2em;
     height: 120px;
   }
   .slider-horizontal {
@@ -68,7 +66,7 @@ ul {
   .slider-vertical {
     position:absolute;
     bottom:40px;
-    left: 4em;
+    left: 2em;
     height: 200px;
   }
   .text-vertical {
