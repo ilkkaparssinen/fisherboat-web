@@ -55,6 +55,9 @@ export class SliderComponent implements ControlValueAccessor {
     // this.setPlace();
   }
 
+  touchEvent(event) {
+    this.mouseEvent(event);
+  }
   mouseEvent(event) {
     var positionInfo;
     if (this.myvertical) {
