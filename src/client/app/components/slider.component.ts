@@ -61,8 +61,10 @@ export class SliderComponent implements ControlValueAccessor {
     // this.setPlace();
   }
 
-  touchEvent(event) {
-    this.mouseEvent(event);
+  touchEvent(evt) {
+    evt.preventDefault();
+    var touch = evt.changedTouches[0];
+    if (touch) this.mouseEvent(touch); // Touch has the needed clientX and ClientY properties
   }
   mouseEvent(event) {
     var positionInfo;
