@@ -7,6 +7,7 @@
     cursor: default;
     width: 20px;
     height: 20px;
+    border-radius: 50%;
     background-color: #a33;
     position: absolute;
 }
@@ -18,12 +19,28 @@
 }
 
 .slider-track-horizontal {
+    padding: 10px;
+
     height: 30px;
     width: 100%;
 }
 
 .slider-track-vertical {
+    padding: 10px;
+    border-radius: 5px;
+
     height: 100%;
     width: 30px;
 }
 
+.inner-track {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+
+    background-color: #999;
+}
+.inner-track-vertical {
+}
+.inner-track-horizontal {
+}

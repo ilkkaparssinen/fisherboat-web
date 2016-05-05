@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {SocketService} from '../shared/index';
 
@@ -8,12 +8,24 @@ import {SocketService} from '../shared/index';
   styleUrls: ['app/components/video.component.css'],
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
-export class VideoComponent  {
+export class VideoComponent implements OnInit {
 
   constructor(public socketService: SocketService) {
     console.log("CONSTRUCTING VIDEO COMPONENT");
     this.socketService = socketService;
     this.socketService.imageChanged.subscribe(image => this.changeImage(image));
+  }
+  public ngOnInit(): any {
+    this.initImage();
+  }
+  initImage() {
+    var canvas: any = document.getElementById('videostream');
+    var ctx = canvas.getContext('2d');
+    var img = new Image;
+    img.onload = function(){
+      ctx.drawImage(img,0,0); // Or at whatever offset you like
+    };
+    img.src = "/assets/png/videotest.png";
   }
 
   changeImage(image) {

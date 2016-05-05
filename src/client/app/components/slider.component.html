@@ -6,7 +6,8 @@
     (mousemove)="mousemoveEvent($event)"
      (mousedown)="onMouseDown($event)" (mouseup)="onMouseUp($event)"
      (touchstart)="touchEvent($event)" (touchmove)="touchEvent($event)" >
-    <div id="sliderpointer"  class="img-rounded slider-pointer slider-pointer-horizontal"
+     <div class="inner-track inner-track-horizontal"></div>
+    <div id="sliderpointer"  class="slider-pointer slider-pointer-horizontal"
          [ngStyle]="{'left':  + x.toString() + 'px'}">
     </div>
 </div>
@@ -14,7 +15,9 @@
      (click)="mouseEvent($event)" (mousedown)="onMouseDown($event)" (mouseup)="onMouseUp($event)"
      (touchstart)="touchEvent($event)" (touchmove)="touchEvent($event)" (mousemove)="mousemoveEvent($event)"
         >
-    <div id="sliderpointer2" class="img-rounded slider-pointer slider-pointer-vertical"
+    <div class="inner-track inner-track-vertical"></div>
+
+    <div id="sliderpointer2" class="slider-pointer slider-pointer-vertical"
          [ngStyle]="{'top': + x.toString()  + 'px'}">
     </div>
 </div>

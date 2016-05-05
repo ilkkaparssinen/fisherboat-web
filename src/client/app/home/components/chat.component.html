@@ -2,7 +2,7 @@
     <div *ngFor="#message of messages; #i = index"
                 class="chatfont chatline"
                 [ngStyle]="{'font-size': (16 - (i / 4)).toString() + 'px',
-                'color': (message.who === myid)  ? '#fff' : '#aaaaff'
+                'color': (message.who === myid)  ? '#fff' : (message.who === 'BOAT') ? '#aaffaa'  : '#aaaaff'
                 }"  [style.opacity]="(20 - i) / 20.0">
                {{ message.message }}
     </div>

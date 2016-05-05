@@ -1,4 +1,4 @@
-<div  id="homecomponent" style="position:relative">
+<div id="homecomponent" style="position:relative">
     <div class="chatarea" id="chatbg">
         <sd-chat style="height:100%;"></sd-chat>
     </div>
@@ -10,31 +10,40 @@
 
 
     <div class="videoarea" id="videobg">
-        <sd-video></sd-video>
-
-        <sd-slider class="slider-vertical" (input)="changeSettings($event)"
-                   id="speed" min="0" max="1" [(ngModel)]="settings.speed" vertical="true"
-                   >
-        </sd-slider>
-
-        <div class="maptext vertical-element noselect  inner text-vertical" for="speed"
-             style="position:absolute;bottom:60px">Speed {{settings.speed}}
+        <div class="videopart">
+            <br/>
+            <sd-video></sd-video>
         </div>
+        <div class="settingspart">
+            <div class="row speedrow">
+                <br/>
+                <div class="col-xs-11">
+                <div class="maptext ">Speed {{settings.speed}}
+                </div>
+                <sd-slider class="slider" (input)="changeSettings($event)"
+                           id="speed" min="0" max="1" [(ngModel)]="settings.speed" vertical="false"
+                        >
+                </sd-slider>
+                </div>
+            </div>
+            <div class="row turnrow">
+                <br/>
+                <div class="col-xs-11">
 
-        <sd-slider class="slider-horizontal" style="position: absolute;bottom:0.3em;left:5em;" (input)="changeSettings($event)"
-             id="turn" min="-1.0" max="1" [(ngModel)]="settings.turn" vertical="false"
-                   >
-        </sd-slider>
+                <div class="maptext">Direction
+                    {{settings.turn}}
+                </div>
 
-        <div style="position: absolute;bottom:2.5em;left:7em;" class="maptext" for="turn">Direction
-            {{settings.turn}}
+                <sd-slider class="slider" (input)="changeSettings($event)"
+                           id="turn" min="-1.0" max="1" [(ngModel)]="settings.turn" vertical="false"
+                        >
+                </sd-slider>
+                </div>
+            </div>
         </div>
 
     </div>
-    <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'>
-        <rect width='16' height='16' fill='#332255'/>
-        <path d='M0 0L16 16ZM16 0L0 16Z' stroke-width='1' stroke='#1e1e2d'/>
-    </svg>
+
 
 </div>
 

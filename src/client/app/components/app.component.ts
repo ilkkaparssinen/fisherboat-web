@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
 import {NavbarComponent} from './navbar.component';
 import {ToolbarComponent} from './toolbar.component';
@@ -30,4 +30,22 @@ import {SettingsComponent} from '../settings/index';
     component: SettingsComponent
   }
 ])
-export class AppComponent {}
+export class AppComponent implements OnInit {
+
+  // Just making svg backgrounds
+  public ngOnInit(): any
+  {
+    console.log("NGONINIT");
+    var svg = document.getElementsByTagName('svg')[0];
+
+// Convert the SVG node to HTML.
+    var div = document.createElement('div');
+    div.appendChild(svg.cloneNode(true));
+
+// Encode the SVG as base64
+    var b64 = 'data:image/svg+xml;base64,'+window.btoa(div.innerHTML);
+    var url = 'url("' + b64 + '")';
+    var demo = document.getElementsByTagName('body')[0];
+    demo.style.backgroundImage = url;
+  }
+}

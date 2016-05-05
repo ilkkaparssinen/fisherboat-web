@@ -10,6 +10,7 @@ export class SocketService {
   status = {};
   settings: any = {};
   messages: any = [];
+  private online: bool = false;
   private host = window.document.location.host.replace(/:.*/, '');
   private ws:any;
 
@@ -20,16 +21,32 @@ export class SocketService {
     console.log('CONNECTIng');
 
     this.ws.onopen = (event:Event) => {
+      console.log("ONOPEN");
+
+      this.online = true;
       this.ws.onmessage = (event) => {
         this.onmessage(event);
       };
       this.ws.onclose = (event) => {
-        setTimeout(function() { this.connect(); }, 5000);
+        this.online = false;
+        this.reconnect();
+        console.log("Trying to reconnect");
       };
       this.ws.send(JSON.stringify({topic: 'TEST',type: 'CLIENT', action: 'SUBSCRIBE'}));
       this.sendChat({message: "Somebody started a web client", id: ""});
     };
   }
+  reconnect(){
+    console.log("RECONNECT");
+    console.log(this.online);
+    if (!this.online) {
+      setTimeout(() => this.reconnect()
+      , 5000);
+    }
+    if (!this.online) this.connect();
+
+  }
+
   getSettings(): any {
     return this.settings;
   }
@@ -112,7 +129,7 @@ export class SocketService {
   }
   constructor() {
     console.log('Socket service');
-    this.connect();
+    this.reconnect();
     this.myid = this.guidGenerator();
   }
   guidGenerator() {

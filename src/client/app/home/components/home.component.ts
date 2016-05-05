@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 
 import {SocketService} from '../../shared/index';
@@ -17,7 +17,7 @@ import { DROPDOWN_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, DROPDOWN_DIRECTIVES, VideoComponent, MapComponent,ChatComponent,SliderComponent]
 })
 
-export class HomeComponent  implements OnInit {
+export class HomeComponent  {
   newName: string;
   isSelectOpen: boolean = false;
   myid:string = "";
@@ -42,25 +42,7 @@ export class HomeComponent  implements OnInit {
 
 
   }
-  // Just making svg backgrounds
-  public ngOnInit(): any
-  {
-    console.log("NGONINIT");
-    var demo = document.getElementById('chatbg');
-    var svg = document.getElementsByTagName('svg')[0];
 
-// Convert the SVG node to HTML.
-    var div = document.createElement('div');
-    div.appendChild(svg.cloneNode(true));
-
-// Encode the SVG as base64
-    var b64 = 'data:image/svg+xml;base64,'+window.btoa(div.innerHTML);
-    var url = 'url("' + b64 + '")';
-    demo.style.backgroundImage = url;
-
-    demo = document.getElementsByTagName('body')[0];
-    demo.style.backgroundImage = url;
-  }
 
   changeSettings(event: any) {
     console.log("CHANGING SETTINGS BY USER");

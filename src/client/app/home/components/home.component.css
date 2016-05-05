@@ -25,27 +25,39 @@ ul {
     height: 30vh;
     width: 100%;
   }
-  .slider-vertical {
-    position:absolute;
-    bottom:40px;
-    left: 2em;
-    height: 120px;
-  }
-  .slider-horizontal {
-    width: 200px;
+  .slider {
+    width: 40%;
   }
   .text-vertical {
     left:1em;
   }
+  .settingspart {
+    width: 49%;
+    display: inline-block;
+  }
+  .videopart {
+    width: 49%;
+    display: inline-block;
 
-
+  }
 }
 @media screen and (orientation:landscape) {
+  .settingspart {
+    width: 100%;
+    height: 100%;
+    float: bottom;
+  }
+  .videopart {
+    width: 100%;
+  }
+
+
+
   .maparea {
     height: 80vh;
     width: 34vw;
     position: absolute;
-    top: 0px;
+    top: 20px;
     left: 33vw;
   }
   .chatarea {
@@ -59,21 +71,16 @@ ul {
     position: absolute;
     top: 0px;
     left: 67vw;
+    padding-left: 12px;
 
     height: 80vh;
     width: 33vw;
   }
-  .slider-vertical {
-    position:absolute;
-    bottom:40px;
-    left: 2em;
-    height: 200px;
+  .slider {
+    width: 15vw;
   }
   .text-vertical {
    left:1em;
-  }
-  .slider-horizontal {
-    width: 20vw;
   }
 
 
@@ -129,17 +136,7 @@ body {
 input[type=range]:focus {
   outline: none;
 }
-#demo {
-  position: absolute;
-  top: 0px; left: 0px;
-  right: 0px; bottom: 0px;
-}
-#code {
-  border: 1px solid #000;
-  background-color: rgba(255,255,255,0.95);
-  padding: 0.5em;
-  margin: 1em;
-}
+
 svg {
   display: none;
 }
