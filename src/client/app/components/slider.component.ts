@@ -60,6 +60,7 @@ export class SliderComponent implements ControlValueAccessor {
   }
   mouseEvent(event) {
     var positionInfo;
+    console.log(event);
     if (this.myvertical) {
       if (event.path[0].id === "slider2") {
         positionInfo = event.path[0].getBoundingClientRect();
