@@ -23,6 +23,9 @@ export class SocketService {
       this.ws.onmessage = (event) => {
         this.onmessage(event);
       };
+      this.ws.onclose = (event) => {
+        setTimeout(function() { this.connect(); }, 5000);
+      };
       this.ws.send(JSON.stringify({topic: 'TEST',type: 'CLIENT', action: 'SUBSCRIBE'}));
       this.sendChat({message: "Somebody started a web client", id: ""});
     };

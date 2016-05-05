@@ -16,7 +16,7 @@ ul {
 }
 @media screen and (orientation:portrait) {
   .maparea {
-    height: 35vh;
+    height: 30vh;
     width: 100%;
   }
   .chatarea {
@@ -29,9 +29,9 @@ ul {
   }
   .slider-vertical {
     position:absolute;
-    bottom:85px;
-    left: -10px;
-    width: 120px;
+    bottom:40px;
+    left: 4em;
+    height: 120px;
   }
   .slider-horizontal {
     width: 200px;
@@ -44,7 +44,7 @@ ul {
 }
 @media screen and (orientation:landscape) {
   .maparea {
-    height: 90vh;
+    height: 80vh;
     width: 34vw;
     position: absolute;
     top: 0px;
@@ -54,7 +54,7 @@ ul {
     position: absolute;
     top: 0px;
     left: 0vh;
-    height: 90vh;
+    height: 80vh;
     width: 33vw;
   }
   .videoarea {
@@ -62,14 +62,14 @@ ul {
     top: 0px;
     left: 67vw;
 
-    height: 90vh;
+    height: 80vh;
     width: 33vw;
   }
   .slider-vertical {
     position:absolute;
-    bottom:150px;
-    left:-4em;
-    width: 200px;
+    bottom:40px;
+    left: 4em;
+    height: 200px;
   }
   .text-vertical {
    left:1em;
@@ -115,9 +115,11 @@ body {
                                   not supported by any browser */
 }
 body {
-  padding: 30px;
   overflow-x: hidden;
   overflow-y: hidden;
+  position: fixed;
+  top: 0px;
+  left:0px;
 }
 
 .vertical-element {

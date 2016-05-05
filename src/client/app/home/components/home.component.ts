@@ -3,6 +3,7 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 
 import {SocketService} from '../../shared/index';
 import {ChatComponent} from './chat.component';
+import {SliderComponent} from '../../components/slider.component';
 
 import {VideoComponent} from '../../components/video.component';
 import {MapComponent} from '../../components/map.component';
@@ -13,7 +14,7 @@ import { DROPDOWN_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
   selector: 'sd-home',
   templateUrl: 'app/home/components/home.component.html',
   styleUrls: ['app/home/components/home.component.css'],
-  directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, DROPDOWN_DIRECTIVES, VideoComponent, MapComponent,ChatComponent]
+  directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, DROPDOWN_DIRECTIVES, VideoComponent, MapComponent,ChatComponent,SliderComponent]
 })
 
 export class HomeComponent  implements OnInit {
@@ -60,6 +61,7 @@ export class HomeComponent  implements OnInit {
     demo = document.getElementById('videobg');
     demo.style.backgroundImage = url;
   }
+
   changeSettings(event: any) {
     console.log("CHANGING SETTINGS BY USER");
     this.socketService.sendSettings(this.settings);

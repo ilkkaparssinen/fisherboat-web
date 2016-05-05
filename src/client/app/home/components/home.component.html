@@ -12,17 +12,21 @@
     <div class="videoarea videobackground" id="videobg">
         <sd-video></sd-video>
 
-        <input class="maptext vertical-element slider-vertical"
-               [(ngModel)]="settings.speed" (input)="changeSettings($event)" id="speed" type="range" min="0" max="1"
-               step="0.02">
+        <sd-slider class="slider-vertical" (input)="changeSettings($event)"
+                   id="turn" min="0" max="1" [(ngModel)]="settings.speed" vertical="true"
+                   step="0.02">
+        </sd-slider>
 
         <div class="maptext vertical-element noselect  inner text-vertical" for="speed"
              style="position:absolute;bottom:60px">Speed {{settings.speed}}
         </div>
 
-        <input style="position: absolute;bottom:1em;left:5em;" [(ngModel)]="settings.turn" class="slider-horizontal" (input)="changeSettings($event)" id="turn" type="range" min="-1" max="1"
+        <sd-slider class="slider-horizontal" style="position: absolute;bottom:1em;left:5em;" (input)="changeSettings($event)"
+             id="turn" min="-1.0" max="1" [(ngModel)]="settings.turn" vertical="false"
                    step="0.02">
-        <div style="position: absolute;bottom:3.3em;left:5em;" class="maptext noselect" for="turn">Direction
+        </sd-slider>
+
+        <div style="position: absolute;bottom:3.3em;left:5em;" class="maptext" for="turn">Direction
             {{settings.turn}}
         </div>
 

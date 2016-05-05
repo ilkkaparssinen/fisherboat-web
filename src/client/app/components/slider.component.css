@@ -1,0 +1,29 @@
+.slider-track {
+    background-color: #ddd;
+    position: relative;
+    cursor: default;
+}
+.slider-pointer {
+    cursor: default;
+    width: 20px;
+    height: 20px;
+    background-color: #a33;
+    position: absolute;
+}
+.slider-pointer-horizontal {
+    top: 5px;
+}
+.slider-pointer-vertical {
+    left: 5px;
+}
+
+.slider-track-horizontal {
+    height: 30px;
+    width: 100%;
+}
+
+.slider-track-vertical {
+    height: 100%;
+    width: 30px;
+}
+
