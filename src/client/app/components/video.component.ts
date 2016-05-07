@@ -9,7 +9,7 @@ import {SocketService} from '../shared/index';
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class VideoComponent implements OnInit {
-
+  private lastImage: any;
   constructor(public socketService: SocketService) {
     console.log("CONSTRUCTING VIDEO COMPONENT");
     this.socketService = socketService;
@@ -20,23 +20,41 @@ export class VideoComponent implements OnInit {
   }
   initImage() {
     var canvas: any = document.getElementById('videostream');
-    var ctx = canvas.getContext('2d');
+    var container: any = document.getElementById('stream-container');
+
+    var context = canvas.getContext('2d');
+    var rect = container.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.width * 0.75;
+
+    context.width = rect.width;
+    context.height = rect.width * 0.75;
+
+    console.log(rect);
     var img = new Image;
     img.onload = function(){
-      ctx.drawImage(img,0,0); // Or at whatever offset you like
+      context.drawImage(img,0,0,context.width,context.height);
+
     };
     img.src = "/assets/png/videotest.png";
   }
-
+  onResize(event) {
+    console.log("RESIZE");
+    if (!this.lastImage) this.initImage();
+    else this.changeImage(this.lastImage);
+  }
   changeImage(image) {
+    this.lastImage = image;
     var canvas: any = document.getElementById('videostream');
     if (!canvas) return;
+    var rect = canvas.getBoundingClientRect();
     var context = canvas.getContext('2d');
     var imageObj = new Image();
     imageObj.src = 'data:image/jpeg;base64,'+image;
     imageObj.onload = function(){
-      context.height = imageObj.height * 2;
-      context.width = imageObj.width * 2;
+      console.log(rect);
+      context.height = rect.height ;
+      context.width = rect.width;
       context.drawImage(imageObj,0,0,context.width,context.height);
     }
   }

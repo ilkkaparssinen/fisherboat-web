@@ -27,8 +27,9 @@ interface Marker {
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES,ANGULAR2_GOOGLE_MAPS_DIRECTIVES]
 })
 export class MapComponent {
-  status = {latitude: 62.0, longitude: 20.0};
+  status = {latitude: 62.0, longitude: 20.0, speed: 0.0};
   mapsettings = {zoom: 17};
+  calcspeed = 0;
   markers: Marker[] = [{lat: 62.0, lng: 20.0, draggable: false, iconUrl: ''}];
 
   constructor(public socketService: SocketService) {
@@ -51,6 +52,8 @@ export class MapComponent {
       var dirimage: any = document.getElementById('directionarrow');
       dirimage.style.transform='rotate(' + this.status["track"] + 'deg)';
       var speedtext: any = document.getElementById('speedtext');
+      this.calcspeed = Math.round(this.status['speed'] * 36) / 10.0;
+
     //  speedtext.style.transform='rotate(' + this.status["track"] + 'deg)';
 
   }

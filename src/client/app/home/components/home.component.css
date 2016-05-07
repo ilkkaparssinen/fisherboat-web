@@ -44,14 +44,10 @@ ul {
 @media screen and (orientation:landscape) {
   .settingspart {
     width: 100%;
-    height: 100%;
-    float: bottom;
   }
   .videopart {
     width: 100%;
   }
-
-
 
   .maparea {
     height: 80vh;
@@ -64,6 +60,7 @@ ul {
     position: absolute;
     top: 0px;
     left: 0vh;
+    padding-top: 8px;
     height: 80vh;
     width: 33vw;
   }
@@ -71,8 +68,8 @@ ul {
     position: absolute;
     top: 0px;
     left: 67vw;
-    padding-left: 12px;
-
+    padding-left: 30px;
+    padding-right: 8px;
     height: 80vh;
     width: 33vw;
   }

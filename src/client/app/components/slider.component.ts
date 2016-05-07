@@ -1,7 +1,7 @@
 /* AWful hack to try to make a slider that works nicely (browser native slider in iOS is way too small) */
 
 
-import {Component,EventEmitter, Input, ElementRef} from 'angular2/core';
+import {Component,EventEmitter, Input,Output, ElementRef} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES,Validators,
     Control,
     ControlGroup,
@@ -43,6 +43,8 @@ export class SliderComponent implements ControlValueAccessor {
   }
 
   onChange: EventEmitter<any> = new EventEmitter();
+  @Output() modified = new EventEmitter();
+
   onTouched: any;
   mousedown = 0;
 
@@ -71,11 +73,8 @@ export class SliderComponent implements ControlValueAccessor {
     var slider;
     var offset;
 
-    console.log(event);
-    console.log(this._elementid);
 
     slider = document.getElementById(this._elementid).firstElementChild;
-    console.log(slider);
     var bodyRect = document.body.getBoundingClientRect(),
         elemRect = slider.getBoundingClientRect();
 
@@ -93,6 +92,7 @@ export class SliderComponent implements ControlValueAccessor {
       this.width = elemRect.width - 15;
     }
     this.offsetCount(offset);
+    this.modified.emit(this._value);
   }
 
   onMouseDown(event) {
@@ -105,6 +105,7 @@ export class SliderComponent implements ControlValueAccessor {
   mousemoveEvent(event) {
     if (this.mousedown != 1) return;
     this.mouseEvent(event);
+
   }
   offsetCount(offsetX) {
      var diff: number = this._max - this._min;

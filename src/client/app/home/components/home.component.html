@@ -1,5 +1,5 @@
 <div id="homecomponent" style="position:relative">
-    <div class="chatarea" id="chatbg">
+    <div class="chatarea">
         <sd-chat style="height:100%;"></sd-chat>
     </div>
 
@@ -9,35 +9,35 @@
     </div>
 
 
-    <div class="videoarea" id="videobg">
+    <div class="videoarea row">
         <div class="videopart">
             <br/>
             <sd-video></sd-video>
         </div>
         <div class="settingspart">
             <div class="row speedrow">
-                <br/>
                 <div class="col-xs-11">
-                <div class="maptext ">Speed {{settings.speed}}
-                </div>
-                <sd-slider class="slider" (input)="changeSettings($event)"
-                           id="speed" min="0" max="1" [(ngModel)]="settings.speed" vertical="false"
-                        >
-                </sd-slider>
+                    <br/>
+
+                    <div class="maptext ">Speed {{settings.speed}}
+                    </div>
+                    <sd-slider class="slider" (modified)="changeSettings($event)"
+                               id="speed" min="0" max="1" [(ngModel)]="settings.speed" vertical="false"
+                            >
+                    </sd-slider>
                 </div>
             </div>
             <div class="row turnrow">
-                <br/>
                 <div class="col-xs-11">
+                    <br/>
+                    <div class="maptext">Direction
+                        {{settings.turn}}
+                    </div>
 
-                <div class="maptext">Direction
-                    {{settings.turn}}
-                </div>
-
-                <sd-slider class="slider" (input)="changeSettings($event)"
-                           id="turn" min="-1.0" max="1" [(ngModel)]="settings.turn" vertical="false"
-                        >
-                </sd-slider>
+                    <sd-slider class="slider" (modified)="changeSettings($event)"
+                               id="turn" min="-1.0" max="1" [(ngModel)]="settings.turn" vertical="false"
+                            >
+                    </sd-slider>
                 </div>
             </div>
         </div>
