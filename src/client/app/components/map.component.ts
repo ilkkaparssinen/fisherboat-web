@@ -44,8 +44,12 @@ export class MapComponent {
     if (!this) return;
 
       if (!this.status['longitude']) return;
+      // Take markers out
+      if (this.markers.length > 20) {
+          this.markers.splice(this.markers.length - 1,1);
+      }
 
-      this.markers.push({lat: this.status['latitude'],
+      this.markers.unshift({lat: this.status['latitude'],
           lng: this.status['longitude'], draggable: false,
           iconUrl: 'assets/png/ship.png'
         });
