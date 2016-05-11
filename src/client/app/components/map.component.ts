@@ -33,7 +33,6 @@ export class MapComponent {
   markers: Marker[] = [{lat: 62.0, lng: 20.0, draggable: false, iconUrl: ''}];
 
   constructor(public socketService: SocketService) {
-        console.log('Mapcomponent');
         this.status = socketService.getStatus();
       socketService.statusChanged.subscribe((data) => {
           this.onStatusChanged();

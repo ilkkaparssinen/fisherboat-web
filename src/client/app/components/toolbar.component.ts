@@ -14,10 +14,6 @@ export class ToolbarComponent   {
   public status:{isopen:boolean} = {isopen: false};
 
   checkChat() {
-    console.log("Check chat");
-    console.log(this.chat.message);
-    console.log(this.chat.id);
-    console.log(this.chat.id);
     if (this.chat.message > "") this.socketService.sendChat(this.chat);
     this.chat.message = "";
     this.chat.id = this.socketService.guidGenerator();
@@ -25,7 +21,6 @@ export class ToolbarComponent   {
   constructor(public socketService: SocketService) {
     this.socketService = socketService;
     this.chat.id = this.socketService.guidGenerator();
-    console.log(this.chat.id);
   }
 
   sendChat() {

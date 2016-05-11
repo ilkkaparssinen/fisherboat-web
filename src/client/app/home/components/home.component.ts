@@ -33,8 +33,6 @@ export class HomeComponent  {
   };
 
   constructor(public socketService: SocketService) {
-    console.log('Home component');
-    console.log(socketService);
     this.status = socketService.getStatus();
     this.socketService = socketService;
     this.settings = socketService.getSettings();
@@ -45,7 +43,6 @@ export class HomeComponent  {
 
 
   changeSettings(event: any) {
-    console.log("CHANGING SETTINGS BY USER");
     this.socketService.sendSettings(this.settings);
     // Short script to encode our SVG in base64
 // This can be reversed using window.atob('base64')

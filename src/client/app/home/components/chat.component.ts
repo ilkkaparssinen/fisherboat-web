@@ -15,7 +15,6 @@ export class ChatComponent  {
   messages: any;
 
   constructor(public socketService: SocketService) {
-    console.log("CHAtCOMPONENT CONSTRUCTION");
     this.socketService = socketService;
     this.messages = socketService.getMessages();
     this.myid = socketService.myid;

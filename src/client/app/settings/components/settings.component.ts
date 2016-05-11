@@ -28,16 +28,12 @@ export class SettingsComponent  {
   };
 
   constructor(public socketService: SocketService) {
-    console.log('Home component');
-    console.log(socketService);
     this.status = socketService.getStatus();
     this.socketService = socketService;
     this.settings = socketService.getSettings();
   }
 
   changeSettings(event: any) {
-    console.log("CHANGE SETTINGS BY USER");
-    console.log(this.settings);
     this.socketService.sendSettings(this.settings);
   }
   /*

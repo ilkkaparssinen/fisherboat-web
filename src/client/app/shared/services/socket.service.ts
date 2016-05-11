@@ -18,10 +18,8 @@ export class SocketService {
 
   connect(): void {
     this.ws = new WebSocket('ws://' + this.host + ':8080');
-    console.log('CONNECTIng');
 
     this.ws.onopen = (event:Event) => {
-      console.log("ONOPEN");
 
       this.online = true;
       this.ws.onmessage = (event) => {
@@ -30,15 +28,12 @@ export class SocketService {
       this.ws.onclose = (event) => {
         this.online = false;
         this.reconnect();
-        console.log("Trying to reconnect");
       };
       this.ws.send(JSON.stringify({topic: 'TEST',type: 'CLIENT', action: 'SUBSCRIBE'}));
       this.sendChat({message: "Somebody started a web client", id: ""});
     };
   }
   reconnect(){
-    console.log("RECONNECT");
-    console.log(this.online);
     if (!this.online) {
       setTimeout(() => this.reconnect()
       , 5000);
@@ -61,8 +56,6 @@ export class SocketService {
     Object.assign(message, settings);
     message.topic = "TEST";
     message.action = "SETTINGS";
-    console.log("Sending settings");
-    console.log(JSON.stringify(message));
     this.ws.send(JSON.stringify(message));
   }
 
@@ -73,8 +66,6 @@ export class SocketService {
     message.message = chat.message;
     message.who = this.myid;
     message.id = chat.id;
-    console.log("Sending chat message");
-    console.log(JSON.stringify(message));
     this.ws.send(JSON.stringify(message));
   }
 
@@ -82,8 +73,6 @@ export class SocketService {
     var data = JSON.parse(event.data);
     if (data.action === 'STATUS') {
       Object.assign(this.status, data);
-      console.log('NEW STATUS');
-      console.log(this.status);
       this.statusChanged.next(this.status);
 
     }
@@ -91,21 +80,17 @@ export class SocketService {
       Object.assign(this.settings, data);
       this.settingsChanged.next(this.status);
 
-      console.log('NEW SETTINGS');
-      console.log(this.settings);
 
     }
     if (data.action === 'MESSAGE') {
       if (!data.who) data.who = "";
       if (data.id && data.id > "") {
         let found = false;
-        console.log(data.id);
         // Update existing data
         for (let i = 0; i < this.messages.length; i++) {
           if (this.messages[i].id === data.id) {
             this.messages[i].message = data.message;
             found = true;
-            console.log("FOUND");
 
             break;
           }
@@ -120,7 +105,6 @@ export class SocketService {
       if (this.messages.length > 20) {
         this.messages.splice(this.messages.length - 1,1);
       }
-      console.log(this.messages);
       this.messagesChanged.next(data.image);
     }
     if (data.action === 'IMAGE') {
@@ -128,7 +112,6 @@ export class SocketService {
     }
   }
   constructor() {
-    console.log('Socket service');
     this.reconnect();
     this.myid = this.guidGenerator();
   }

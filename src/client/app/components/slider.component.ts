@@ -30,8 +30,6 @@ export class SliderComponent implements ControlValueAccessor {
     this._max = parseFloat(value);
   }
   @Input() set vertical (value) {
-    console.log("LAKSJDLAKJSDLKASDLKJLJKASD");
-    console.log(value);
     if (value == "true") this.myvertical = true;
   }
   @Input() set disabled(value) {
@@ -50,10 +48,7 @@ export class SliderComponent implements ControlValueAccessor {
 
 
   constructor(myElement: ElementRef,private cd: NgControl) {
-    console.log("REF");
-    console.log(myElement);
     this._elementid = myElement.nativeElement.id);
-    console.log(this._elementid);
     cd.valueAccessor = this;
   }
 
@@ -78,7 +73,6 @@ export class SliderComponent implements ControlValueAccessor {
     var bodyRect = document.body.getBoundingClientRect(),
         elemRect = slider.getBoundingClientRect();
 
-    console.log('Element is ' + offset + ' vertical pixels from <body>');
 
     if (this.myvertical) {
       offset = elemRect.top - bodyRect.top;
@@ -129,7 +123,6 @@ export class SliderComponent implements ControlValueAccessor {
     if (this.myvertical) place = 1 - place; // Bottom is 0 - top is 1
 
     this.x =  place * (this.width); // 15 = half of the size of pointer
-    console.log(this.x);
     this.onChange.emit(this._value);
   }
 

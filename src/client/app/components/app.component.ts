@@ -35,7 +35,6 @@ export class AppComponent implements OnInit {
   // Just making svg backgrounds
   public ngOnInit(): any
   {
-    console.log("NGONINIT");
     var svg = document.getElementsByTagName('svg')[0];
 
 // Convert the SVG node to HTML.

@@ -11,7 +11,6 @@ import {SocketService} from '../shared/index';
 export class VideoComponent implements OnInit {
   private lastImage: any;
   constructor(public socketService: SocketService) {
-    console.log("CONSTRUCTING VIDEO COMPONENT");
     this.socketService = socketService;
     this.socketService.imageChanged.subscribe(image => this.changeImage(image));
   }
@@ -30,7 +29,6 @@ export class VideoComponent implements OnInit {
     context.width = rect.width;
     context.height = rect.width * 0.75;
 
-    console.log(rect);
     var img = new Image;
     img.onload = function(){
       context.drawImage(img,0,0,context.width,context.height);
@@ -39,7 +37,6 @@ export class VideoComponent implements OnInit {
     img.src = "/assets/png/videotest.png";
   }
   onResize(event) {
-    console.log("RESIZE");
     if (!this.lastImage) this.initImage();
     else this.changeImage(this.lastImage);
   }
@@ -52,7 +49,6 @@ export class VideoComponent implements OnInit {
     var imageObj = new Image();
     imageObj.src = 'data:image/jpeg;base64,'+image;
     imageObj.onload = function(){
-      console.log(rect);
       context.height = rect.height ;
       context.width = rect.width;
       context.drawImage(imageObj,0,0,context.width,context.height);
