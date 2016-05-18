@@ -40,6 +40,11 @@ export class VideoComponent implements OnInit {
     if (!this.lastImage) this.initImage();
     else this.changeImage(this.lastImage);
   }
+  requestPhoto(event) {
+    console.log("Request photo");
+    this.socketService.requestPhoto();
+  }
+
   changeImage(image) {
     this.lastImage = image;
     var canvas: any = document.getElementById('videostream');

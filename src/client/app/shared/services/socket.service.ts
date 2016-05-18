@@ -5,11 +5,13 @@ export class SocketService {
   settingsChanged: EventEmitter = new EventEmitter();
   statusChanged: EventEmitter = new EventEmitter();
   imageChanged: EventEmitter = new EventEmitter();
+  photoReceived: EventEmitter = new EventEmitter();
   messagesChanged: EventEmitter = new EventEmitter();
   myid: string = "";
   status = {};
   settings: any = {};
   messages: any = [];
+  photo: any;
   private online: bool = false;
   private host = window.document.location.host.replace(/:.*/, '');
   private ws:any;
@@ -68,7 +70,15 @@ export class SocketService {
     message.id = chat.id;
     this.ws.send(JSON.stringify(message));
   }
-
+  requestPhoto(): void {
+    var message: any= {};
+    message.topic = "TAKEPHOTO";
+    message.who = this.myid;
+    this.ws.send(JSON.stringify(message));
+  }
+  getPhoto(): any {
+    return this.photo;
+  }
   onmessage(event): void {
     var data = JSON.parse(event.data);
     if (data.action === 'STATUS') {
@@ -81,6 +91,11 @@ export class SocketService {
       this.settingsChanged.next(this.status);
 
 
+    }
+    if (data.action === 'PHOTO') {
+      Object.assign(this.photo, data);
+      this.photo = data.image;
+      this.photoReceived.next(data.image);
     }
     if (data.action === 'MESSAGE') {
       if (!data.who) data.who = "";

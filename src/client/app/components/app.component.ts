@@ -4,6 +4,8 @@ import {NavbarComponent} from './navbar.component';
 import {ToolbarComponent} from './toolbar.component';
 import {SocketService} from '../shared/index';
 import {HomeComponent} from '../home/index';
+
+import {PhotoComponent} from '../home/index';
 import {AboutComponent} from '../about/index';
 import {SettingsComponent} from '../settings/index';
 
@@ -12,7 +14,7 @@ import {SettingsComponent} from '../settings/index';
   selector: 'sd-app',
   viewProviders: [SocketService],
   templateUrl: 'app/components/app.component.html',
-  directives: [ROUTER_DIRECTIVES,NavbarComponent, ToolbarComponent]
+  directives: [ROUTER_DIRECTIVES,NavbarComponent, ToolbarComponent, HomeComponent, PhotoComponent]
 })
 @RouteConfig([
   {
@@ -28,7 +30,12 @@ import {SettingsComponent} from '../settings/index';
     path: '/settings',
     name: 'Settings',
     component: SettingsComponent
-  }
+  },
+    {
+      path: '/photo',
+      name: 'Photo',
+      component: PhotoComponent
+    }
 ])
 export class AppComponent implements OnInit {
 
