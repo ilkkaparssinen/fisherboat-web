@@ -10,6 +10,7 @@ import {SocketService} from '../shared/index';
 })
 export class VideoComponent implements OnInit {
   private lastImage: any;
+  photoRequested: boolean = false;
   constructor(public socketService: SocketService) {
     this.socketService = socketService;
     this.socketService.imageChanged.subscribe(image => this.changeImage(image));
@@ -41,8 +42,12 @@ export class VideoComponent implements OnInit {
     else this.changeImage(this.lastImage);
   }
   requestPhoto(event) {
-    console.log("Request photo");
+    if (this.photoRequested) return; // Prevent multiple
+    this.photoRequested = true;
     this.socketService.requestPhoto();
+    setTimeout(function() {
+      this.photoRequested = false;
+    }.bind(this), 3000);
   }
 
   changeImage(image) {

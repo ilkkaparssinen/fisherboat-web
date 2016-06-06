@@ -11,7 +11,7 @@ export class SocketService {
   status = {};
   settings: any = {};
   messages: any = [];
-  photo: any;
+  photo: any = "";
   private online: bool = false;
   private host = window.document.location.host.replace(/:.*/, '');
   private ws:any;
@@ -72,7 +72,8 @@ export class SocketService {
   }
   requestPhoto(): void {
     var message: any= {};
-    message.topic = "TAKEPHOTO";
+    message.topic = "TEST";
+    message.action = "TAKEPHOTO";
     message.who = this.myid;
     this.ws.send(JSON.stringify(message));
   }
@@ -81,6 +82,7 @@ export class SocketService {
   }
   onmessage(event): void {
     var data = JSON.parse(event.data);
+
     if (data.action === 'STATUS') {
       Object.assign(this.status, data);
       this.statusChanged.next(this.status);
@@ -93,8 +95,7 @@ export class SocketService {
 
     }
     if (data.action === 'PHOTO') {
-      Object.assign(this.photo, data);
-      this.photo = data.image;
+      this.photo =  data.image;
       this.photoReceived.next(data.image);
     }
     if (data.action === 'MESSAGE') {

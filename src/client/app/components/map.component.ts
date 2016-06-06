@@ -53,6 +53,8 @@ export class MapComponent {
           iconUrl: 'assets/png/ship.png'
         });
       var dirimage: any = document.getElementById('directionarrow');
+      if (!dirimage) return;
+
       dirimage.style.transform='rotate(' + this.status["track"] + 'deg)';
       var speedtext: any = document.getElementById('speedtext');
       this.calcspeed = Math.round(this.status['speed'] * 36) / 10.0;

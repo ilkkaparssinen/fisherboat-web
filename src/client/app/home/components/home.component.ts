@@ -4,7 +4,6 @@ import {ROUTER_DIRECTIVES, RouteConfig,Router} from 'angular2/router';
 
 import {SocketService} from '../../shared/index';
 import {ChatComponent} from './chat.component';
-import {PhotoComponent} from './photo.component';
 import {SliderComponent} from '../../components/slider.component';
 import {VideoComponent} from '../../components/video.component';
 import {MapComponent} from '../../components/map.component';
@@ -47,7 +46,7 @@ export class HomeComponent  {
   }
 
   showPhoto(image) {
-    this.router.navigate(['/home/photo']);
+    this.router.navigate(['Photo']);
 
   }
   changeSettings(event: any) {

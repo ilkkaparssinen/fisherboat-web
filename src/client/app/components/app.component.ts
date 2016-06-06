@@ -4,7 +4,6 @@ import {NavbarComponent} from './navbar.component';
 import {ToolbarComponent} from './toolbar.component';
 import {SocketService} from '../shared/index';
 import {HomeComponent} from '../home/index';
-
 import {PhotoComponent} from '../home/index';
 import {AboutComponent} from '../about/index';
 import {SettingsComponent} from '../settings/index';
