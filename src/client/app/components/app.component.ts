@@ -38,6 +38,10 @@ import {SettingsComponent} from '../settings/index';
 ])
 export class AppComponent implements OnInit {
 
+  constructor(public socketService: SocketService, public location: Location) {
+    this.location = location;
+    this.socketService = socketService;
+  }
   // Just making svg backgrounds
   public ngOnInit(): any
   {
@@ -52,10 +56,20 @@ export class AppComponent implements OnInit {
     var url = 'url("' + b64 + '")';
     var demo = document.getElementsByTagName('body')[0];
     demo.style.backgroundImage = url;
-    SocketService.topic = "TEST";
+
+    this.socketService.topic = "TEST";
     console.log("START");
-    console.log(Location.href);
-
-
+    console.log(this.location.path());
+    var params = this.location.path().split('?');
+    if (params.length >= 2) {
+      var query = params[1].split("&");
+      for (var i = 0; i < query.length;i++) {
+        var param = query[i].split("=");
+        if (param[0] == "boat" && param.length == 2) {
+          this.socketService.topic = param[1]; // GOT BOAT PARAMETEr
+          console.log("BOAT:" + param[1]);
+        }
+      }
+    }
   }
 }

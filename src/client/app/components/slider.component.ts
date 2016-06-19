@@ -48,7 +48,7 @@ export class SliderComponent implements ControlValueAccessor {
 
 
   constructor(myElement: ElementRef,private cd: NgControl) {
-    this._elementid = myElement.nativeElement.id);
+    this._elementid = myElement.nativeElement.id;
     cd.valueAccessor = this;
   }
 

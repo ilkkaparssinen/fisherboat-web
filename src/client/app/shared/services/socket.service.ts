@@ -33,7 +33,7 @@ export class SocketService {
         this.reconnect();
       };
       this.ws.send(JSON.stringify({topic: this.topic,type: 'CLIENT', action: 'SUBSCRIBE'}));
-      this.sendChat({message: "Somebody started a web client", id: ""});
+      this.sendChat({message: "Web client started for boat:" + this.topic, id: ""});
     };
   }
   reconnect(){
