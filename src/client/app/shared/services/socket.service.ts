@@ -8,6 +8,7 @@ export class SocketService {
   photoReceived: EventEmitter = new EventEmitter();
   messagesChanged: EventEmitter = new EventEmitter();
   myid: string = "";
+  topic: string = "TEST";
   status = {};
   settings: any = {};
   messages: any = [];
@@ -31,7 +32,7 @@ export class SocketService {
         this.online = false;
         this.reconnect();
       };
-      this.ws.send(JSON.stringify({topic: 'TEST',type: 'CLIENT', action: 'SUBSCRIBE'}));
+      this.ws.send(JSON.stringify({topic: this.topic,type: 'CLIENT', action: 'SUBSCRIBE'}));
       this.sendChat({message: "Somebody started a web client", id: ""});
     };
   }
@@ -56,14 +57,14 @@ export class SocketService {
   sendSettings(settings): void {
     var message: any= {};
     Object.assign(message, settings);
-    message.topic = "TEST";
+    message.topic = this.topic;
     message.action = "SETTINGS";
     this.ws.send(JSON.stringify(message));
   }
 
   sendChat(chat): void {
     var message: any= {};
-    message.topic = "TEST";
+    message.topic = this.topic;
     message.action = "MESSAGE";
     message.message = chat.message;
     message.who = this.myid;
@@ -72,7 +73,7 @@ export class SocketService {
   }
   requestPhoto(): void {
     var message: any= {};
-    message.topic = "TEST";
+    message.topic = this.topic;
     message.action = "TAKEPHOTO";
     message.who = this.myid;
     this.ws.send(JSON.stringify(message));

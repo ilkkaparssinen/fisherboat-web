@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
+import {ROUTER_DIRECTIVES, RouteConfig, Location} from 'angular2/router';
 import {NavbarComponent} from './navbar.component';
 import {ToolbarComponent} from './toolbar.component';
 import {SocketService} from '../shared/index';
@@ -52,5 +52,10 @@ export class AppComponent implements OnInit {
     var url = 'url("' + b64 + '")';
     var demo = document.getElementsByTagName('body')[0];
     demo.style.backgroundImage = url;
+    SocketService.topic = "TEST";
+    console.log("START");
+    console.log(Location.href);
+
+
   }
 }
