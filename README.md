@@ -27,4 +27,5 @@ Raspberry Pi in boat, which controls GPS, camera and the motors. Boat is steered
   - This project is based on angular seed project: https://github.com/mgechev/angular2-seed. It is definitely a overkill for project of this size, but I needed to learn it, so there is a lot of unnecessary stuff.
   - I don't recommend the use of this project directly - Angular 2 has taken leaps since the creation of this project.
 
-
+## Software license:
+ - DWYWDBM-license: Do what you want, don't blame me
